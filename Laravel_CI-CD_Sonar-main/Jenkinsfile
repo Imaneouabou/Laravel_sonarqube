@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git url: 'https://github.com/ChakraHs/ChakraHs-Laravel_CI-CD_Sonar.git', branch: 'main'
+                git url: 'https://github.com/Imaneouabou/Laravel_sonarqube', branch: 'main'
             }
         }
 
@@ -58,9 +58,9 @@ pipeline {
                     withSonarQubeEnv('SonarQube') {
                         sh """
                             ${scannerHome}/bin/sonar-scanner \
-                            -Dsonar.projectKey=GitlabMx \
+                            -Dsonar.projectKey=laravel_test_sonar \
                             -Dsonar.host.url=http://localhost:9000 \
-                            -Dsonar.login=sqp_5c7cf314cd19d3f60ed624ea584d547820ccd482 \
+                            -Dsonar.login=squ_fdb47dc2460123eec69a8cd16063b6afc9fbfefc \
                             -Dsonar.sources=./app \
                             -Dsonar.exclusions="vendor/*,storage/**,bootstrap/cache/*"
                         """
@@ -80,12 +80,12 @@ pipeline {
 
         // stage('Email Sent') {
         //     steps{
-        //         sh 'swaks --to houcine.chakra10@gmail.com \
-        //             --from "chakra.hs.business@gmail.com" \
+        //         sh 'swaks --to  imanenada189@gmail.com  \
+        //             --from " imanenada189@gmail.com " \
         //             --server "smtp.gmail.com" \
         //             --port "587" \
         //             --auth PLAIN \
-        //             --auth-user "chakra.hs.business@gmail.com" \
+        //             --auth-user " imanenada189@gmail.com " \
         //             --auth-password "pnuw lgzu ofkv oyoq" \
         //             --helo "localhost" \
         //             --tls \
@@ -110,8 +110,8 @@ pipeline {
                              <p>Cordialement,</p>
                              <p>Votre serveur Jenkins</p>""",
                     to: 'houcine.chakra10@gmail.com', // Remplacez par les adresses souhaitées
-                    from:"chakra.hs.business@gmail.com",
-                    replyTo:"chakra.hs.business@gmail.com",
+                    from:" imanenada189@gmail.com ",
+                    replyTo:"imanenada189@gmail.com",
                     mimeType: 'text/html'
                 )
             }
