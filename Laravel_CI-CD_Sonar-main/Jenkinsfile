@@ -43,13 +43,13 @@ pipeline {
             } 
         }
 
-        // stage('SonarQube Analysis') {
-        //     steps {
-        //         withSonarQubeEnv('SonarQube') {
-        //             sh 'docker run --network=host -e SONAR_HOST_URL="http://127.0.0.1:9000" -v "$PWD:/usr/src" sonarsource/sonar-scanner-cli'
-        //         }
-        //     }
-        // }
+      stage('SonarQube Analysis') {
+        steps {
+            withSonarQubeEnv('SonarQube') {
+                sh 'docker run --network=host -e SONAR_HOST_URL="http://127.0.0.1:9000" -v "$PWD:/usr/src" sonarsource/sonar-scanner-cli'
+            }
+        }
+    }
 
         stage('SonarQube Analysis') {
             steps {
